@@ -1,5 +1,6 @@
 package it.unibo.mvc;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -33,6 +34,10 @@ public class MiniGUI {
         canvas.add(write, BorderLayout.CENTER);
         frame.setContentPane(canvas);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        final JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(frame, BoxLayout.LINE_AXIS));
+        canvas.add(panel, BorderLayout.CENTER);
+        panel.add(write);
         /*
          * Handlers
          */

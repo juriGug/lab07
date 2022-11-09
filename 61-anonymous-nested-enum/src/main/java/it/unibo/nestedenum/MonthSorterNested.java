@@ -1,8 +1,6 @@
 package it.unibo.nestedenum;
 
 import java.util.Comparator;
-import java.util.Locale;
-import java.util.Objects;
 
 /**
  * Implementation of {@link MonthSorter}.
@@ -32,18 +30,43 @@ public final class MonthSorterNested implements MonthSorter {
         public int getDays(){
             return this.days;
         }
-        public Month fromString(final String month){
-            return DECEMBER; 
+        public static  Month fromString(final String month){
+            int counter = 0;
+            Month m = null;
+            for(final Month s : Month.values() ){
+                if(s.toString().startsWith(month.toUpperCase())){
+                    counter++;
+                    m = s;
+                }
+            }
+            if(counter == 1){
+                return m;
+            }
+            throw new IllegalArgumentException();
         }
     }
 
     @Override
     public Comparator<String> sortByDays() {
-        return null;
+
+        return new Comparator<String>() {
+
+            public int compare ( String m1 , String m2 ) { 
+                var o1 = Month.fromString(m1);
+                var o2 = Month.fromString(m2);
+                return Integer.compare(o1.getDays(), o2.getDays());
+            }
+        };
     }
 
     @Override
     public Comparator<String> sortByOrder() {
-        return null;
+        return new Comparator<String>() {
+            public int compare ( String m1 , String m2 ) { 
+                var o1 = Month.fromString(m1);
+                var o2 = Month.fromString(m2);
+                return o1.compareTo(o2);
+            }
+        };
     }
 }

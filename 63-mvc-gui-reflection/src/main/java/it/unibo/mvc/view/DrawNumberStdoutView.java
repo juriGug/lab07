@@ -5,7 +5,7 @@ import it.unibo.mvc.api.DrawNumberController;
 import it.unibo.mvc.api.DrawNumberView;
 import it.unibo.mvc.api.DrawResult;
 
-public class DrawNumberStdout implements DrawNumberView {
+public class DrawNumberStdoutView implements DrawNumberView {
 
     private static final String NEW_GAME = ": a new game starts!";
     

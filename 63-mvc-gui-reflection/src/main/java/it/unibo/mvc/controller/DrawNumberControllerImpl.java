@@ -16,16 +16,15 @@ import java.util.Objects;
 public final class DrawNumberControllerImpl implements DrawNumberController {
 
     private final DrawNumber model;
-    private Collection<DrawNumberView> view;
+    private Collection<DrawNumberView> view = new LinkedList<>();
 
     /**
-     * Builds a new game controller provided a game model.
+     * Builds a new game controller provided a game model.s
      *
      * @param model the implementation of the game model
      */
     public DrawNumberControllerImpl(final DrawNumber model) {
         this.model = model;
-        this.view = new LinkedList<>();
     }
 
     @Override
